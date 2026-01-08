@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALIENTO - Taste the Exceptional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <a href="#" class="logo">ALIENTO.</a>
+            <nav class="nav-links">
+                <a href="/recipes.html" class="nav-link">Recipes</a>
+                <a href="/restaurants.html" class="nav-link">Restaurants</a>
+                <a href="/community.html" class="nav-link">Community</a>
+                <a href="/about.html" class="nav-link">About</a>
+            </nav>
+            <a href="/community.html" class="btn btn-primary">Subscribe</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-decoration"></div>
+                    <h1>Taste the <br><span>Extraordinary</span></h1>
+                    <p class="hero-subtitle">Discover culinary secrets, explore world-class restaurants, and elevate
+                        your home cooking with our curated guides.</p>
+                    <div class="hero-cta">
+                        <a href="/recipes.html" class="btn btn-primary">Explore Recipes</a>
+                        <a href="/video.html" class="btn btn-outline" style="margin-left: 16px;">Watch Video</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <!-- Placeholder for hero image -->
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop"
+                        alt="Delicious Food" class="hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Categories</span>
+                <h2 class="section-title">Curated Collections</h2>
+                <p style="color: var(--color-text-light);">Browse our most popular food categories</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🥗</div>
+                    <h3 class="category-title">Fresh Salads</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🥩</div>
+                    <h3 class="category-title">Prime Steaks</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍰</div>
+                    <h3 class="category-title">Desserts</h3>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🍷</div>
+                    <h3 class="category-title">Beverages</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Latest Stories</span>
+                <h2 class="section-title">Fresh from Kitchen</h2>
+            </div>
+
+            <div class="posts-grid" id="postsGrid">
+                <!-- Posts will be loaded dynamically or fallbacks given here -->
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=2071&auto=format&fit=crop"
+                        alt="Curry" class="post-image">
+                    <div class="post-content">
+                        <div class="post-meta">Cooking Tips</div>
+                        <h3 class="post-title">The Secret to Perfect Curry</h3>
+                        <p class="post-excerpt">Discover the spice blends that transform a simple dish into a
+                            masterpiece of flavor.</p>
+                        <a href="#" class="read-more">Read Story <svg width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=2020&auto=format&fit=crop"
+                        alt="Breakfast" class="post-image">
+                    <div class="post-content">
+                        <div class="post-meta">Morning Routine</div>
+                        <h3 class="post-title">Healthy Breakfast Ideas</h3>
+                        <p class="post-excerpt">Start your day right with these nutritious and delicious breakfast
+                            bowls.</p>
+                        <a href="#" class="read-more">Read Story <svg width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop"
+                        alt="Sushi" class="post-image">
+                    <div class="post-content">
+                        <div class="post-meta">Restaurant Reviews</div>
+                        <h3 class="post-title">Top Sushi Spots in Tokyo</h3>
+                        <p class="post-excerpt">A culinary journey through the best sushi counters in the heart of
+                            Japan.</p>
+                        <a href="#" class="read-more">Read Story <svg width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="newsletter">
+            <h2>Join Our Foodie Community</h2>
+            <p>Get weekly recipes, restaurant reviews, and exclusive cooking tips delivered straight to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-primary" style="border-radius: 99px;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>ALIENTO.</h3>
+                    <p class="footer-desc">A premium food blog dedicated to the art of cooking and the joy of eating.
+                        Exploring flavors from around the world.</p>
+                    <div class="social-links">
+                        <!-- Icons placeholder -->
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Discover</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Recipes</a></li>
+                        <li><a href="#">Restaurants</a></li>
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Shop</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Aliento Food Blog. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post - ALIENTO</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Absolute path since we are in /post/:id -->
+    <style>
+        .post-header-bg {
+            height: 400px;
+            background: var(--color-secondary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .post-header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .post-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .article-body {
+            max-width: 800px;
+            margin: -60px auto 60px;
+            background: white;
+            padding: 60px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 10;
+        }
+
+        .article-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text-main);
+        }
+
+        .article-text p {
+            margin-bottom: 24px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container navbar">
+            <a href="/" class="logo">ALIENTO.</a>
+            <nav class="nav-links">
+                <a href="/recipes.html" class="nav-link">Recipes</a>
+                <a href="/restaurants.html" class="nav-link">Restaurants</a>
+                <a href="/community.html" class="nav-link">Community</a>
+                <a href="/about.html" class="nav-link">About</a>
+            </nav>
+            <a href="/community.html" class="btn btn-primary">Subscribe</a>
+        </div>
+    </header>
+
+    <main id="postContainer">
+        <div class="post-header-bg">
+            <div class="post-header-content">
+                <a href="/" class="back-link">← Back to Recipes</a>
+                <div class="post-meta" id="postMeta" style="color: var(--color-primary); margin-bottom: 16px;">
+                    LOADING...</div>
+                <h1 id="postTitle" style="font-size: 48px; color: white; margin-bottom: 16px;">Loading Post...</h1>
+                <p id="postDate" style="color: rgba(255,255,255,0.6);">Please wait</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <article class="article-body">
+                <div id="postBody" class="article-text">
+                    <p>Fetching delicious content...</p>
+                </div>
+                <div
+                    style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: var(--color-text-light); font-size: 14px;">
+                    <span id="postViews">0 views</span>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand" style="text-align: center;">
+                <h3>ALIENTO.</h3>
+                <p class="copyright">&copy; 2026 Aliento Food Blog. Taste the Exceptional.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load post from URL
+        const pathParts = window.location.pathname.split('/');
+        const postId = pathParts[pathParts.length - 1]; // Get the ID
+
+        async function loadPost() {
+            try {
+                // If we are just viewing post.html directly properly it won't work without server routing
+                // But assuming /post/:id route serves this file or similar
+                const res = await fetch(`/api/posts/${postId}`);
+                if (!res.ok) throw new Error('Post not found');
+
+                const post = await res.json();
+
+                document.getElementById('postTitle').textContent = post.title;
+                document.getElementById('postDate').textContent = new Date(post.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('postMeta').textContent = post.category || 'Food & Drink';
+                document.getElementById('postViews').textContent = `${post.views || 0} people read this`;
+
+                // transform newlines to paragraphs if needed, or just text content
+                // safety: using textContent for body to prevent XSS if content is user input without sanitization
+                document.getElementById('postBody').textContent = post.content;
+
+                document.title = `${post.title} - ALIENTO`;
+            } catch (error) {
+                document.getElementById('postContainer').innerHTML = `
+                    <div style="text-align:center; padding: 100px;">
+                        <h1>Post not found</h1>
+                        <p>The recipe you are looking for might have been moved or eaten.</p>
+                        <a href="/" class="btn btn-primary" style="margin-top:20px;">Go Home</a>
+                    </div>`;
+            }
+        }
+
+        // Only load if we have an ID and it's not the generic file
+        if (postId && !postId.endsWith('.html')) {
+            loadPost();
+        } else {
+            // If viewed as file or without ID, show error or generic
+            // document.getElementById('postTitle').textContent = "Select a post to view";
+        }
+    </script>
+</body>
+
+</html>
